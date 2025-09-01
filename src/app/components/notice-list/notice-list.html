@@ -1,0 +1,29 @@
+<app-location-filter
+  (search)="filterByLocation($event)" (clear)="clearFilterByLocation()">
+</app-location-filter>
+
+<div class="container">
+  <app-notice-filter
+    [categories]="categories"
+    (filterChange)="onFilterChanged($event)"
+  ></app-notice-filter>
+
+  <ngx-masonry>
+    <ngxMasonryItem *ngFor="let notice of filteredNotices">
+      <app-notice-card
+        [notice]="notice"
+        (edit)="editNotice($event)"
+        (delete)="deleteNotice($event)"
+      ></app-notice-card>
+    </ngxMasonryItem>
+  </ngx-masonry>
+  <button
+    mat-fab
+  class="custom-fab"
+    aria-label="Add new notice"
+    (click)="openCreateDialog()"
+  >
+<mat-icon class="custom-icon">add</mat-icon>
+  </button>
+  
+</div>

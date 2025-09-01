@@ -1,0 +1,20 @@
+mat-toolbar {
+  display: flex;
+  justify-content: center; /* מרכז את הכיתוב */
+  position: relative;
+}
+
+.menu-icon {
+  position: absolute;
+  left: 10px; /* האייקון בצד שמאל */
+}
+
+.toolbar-text {
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: var(--mat-card-title-text-font, var(--mat-sys-title-large-font));
+}
+
+.header-container{
+    margin-bottom: 50px;
+}

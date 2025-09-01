@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  gap: 20px;       // ריווח בין הפילטרים לרשימה
+  align-items: flex-start; // הפילטרים מתחילים מלמעלה
+}
+app-notice-filter {
+  flex: 0 0 250px; // רוחב קבוע לפילטר
+}
+
+ngx-masonry {
+  flex: 1;         // שאר הרוחב נשאר למודעות
+}
+
+ngx-masonry-item {
+  position: relative;
+}
+
+.add-button-container {
+  display: flex;
+  justify-content: flex-end; /* ימינה */
+  margin-top: 16px; /* רווח מעל הכפתור */
+}
+
+.add-notice-btn {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.custom-fab {
+  background-color: #f44336; 
+  color: white;             
+}
+
+.custom-fab:hover {
+  background-color: rgba(197, 45, 34, 0.526); 
+}

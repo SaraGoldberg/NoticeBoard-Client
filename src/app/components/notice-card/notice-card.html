@@ -1,0 +1,32 @@
+<mat-card
+  class="card"
+  [ngStyle]="{ 'border-top': '2px solid ' + getCategoryColor(notice.category) }"
+  appearance="outlined"
+>
+  <mat-card-header>
+    <mat-card-subtitle *ngIf="notice.category">{{
+      notice.category
+    }}</mat-card-subtitle>
+    <mat-card-title>{{ notice.title }}</mat-card-title>
+  </mat-card-header>
+  <img *ngIf="notice.imageUrl" mat-card-image [src]="notice.imageUrl" />
+  <mat-card-content>
+    <p>
+      {{ notice.content }}
+    </p>
+    <p class="address">
+      {{ notice.location?.address }}
+    </p>
+    <ng-container *ngFor="let _ of [].constructor(notice.priority)">
+      <mat-icon color="warn">star</mat-icon>
+    </ng-container>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button color="primary" (click)="edit.emit(notice)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="delete.emit(notice.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

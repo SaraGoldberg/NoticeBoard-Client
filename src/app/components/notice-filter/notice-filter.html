@@ -1,0 +1,40 @@
+<div class="container">
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="model.text" placeholder="Title or content" />
+  </mat-form-field>
+
+  <!-- <mat-form-field appearance="fill" class="full">
+    <mat-label>Author</mat-label>
+    <input matInput [(ngModel)]="model.author" placeholder="Author name" />
+  </mat-form-field> -->
+
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Category</mat-label>
+    <mat-select
+      #categorySelect
+      multiple
+      [(ngModel)]="model.categories"
+      (selectionChange)="categorySelect.close()"
+    >
+      <mat-option *ngFor="let c of categories" [value]="c">
+        {{ c.name + " (" + c.count + ")" }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Min Priority</mat-label>
+    <input matInput type="number" [(ngModel)]="model.minPriority" placeholder="Minimum priority" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Max Priority</mat-label>
+    <input matInput type="number" [(ngModel)]="model.maxPriority" placeholder="Maximum priority" />
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-stroked-button (click)="reset()">Reset</button>
+    <button mat-flat-button color="primary" (click)="apply()">Apply</button>
+  </div>
+</div>

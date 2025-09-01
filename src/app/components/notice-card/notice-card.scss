@@ -1,0 +1,17 @@
+.card {
+  max-width: 250px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+}
+
+.header-image {
+  background-size: cover;
+}
+.address {
+  font-size: 0.9rem;
+  color: gray;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}

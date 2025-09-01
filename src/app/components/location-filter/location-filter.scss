@@ -1,0 +1,26 @@
+.location-filter {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 16px 0;
+  width: 100%; /* תופס את כל רוחב הדף */
+}
+
+.location-filter .full-width {
+  flex: 1; /* התיבה מתרחבת לפי המקום הזמין */
+}
+
+button {
+  white-space: nowrap; /* כדי שהכפתורים לא ישברו שורה */
+}
+.location-filter-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.distance-slider {
+  display: flex;
+  flex-direction: column;
+}

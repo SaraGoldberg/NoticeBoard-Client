@@ -1,0 +1,84 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content>
+  <!-- Title -->
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Title</mat-label>
+    <input required matInput [(ngModel)]="notice!.title" />
+  </mat-form-field>
+
+  <!-- Content -->
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Content</mat-label>
+    <textarea required matInput [(ngModel)]="notice!.content"></textarea>
+  </mat-form-field>
+
+  <!-- Author -->
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Author</mat-label>
+    <input matInput [(ngModel)]="notice!.author" />
+  </mat-form-field>
+
+  <!-- Category -->
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Category</mat-label>
+    <mat-select
+      required
+      #categorySelect
+      [(ngModel)]="notice!.category"
+      (selectionChange)="categorySelect.close()"
+    >
+      <mat-option *ngFor="let c of categories" [value]="c">{{ c }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Priority -->
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Priority</mat-label>
+    <input matInput type="number" [(ngModel)]="notice!.priority" />
+  </mat-form-field>
+
+  <!-- Address with Autocomplete -->
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Address</mat-label>
+    <input
+      required
+      matInput
+      #addressInput
+      [(ngModel)]="notice!.location!.address"
+      placeholder="Enter address or select from suggestions"
+    />
+  </mat-form-field>
+
+  <!-- Map -->
+  <h3>Select Location</h3>
+  <google-map
+    height="300px"
+    width="100%"
+    [center]="center"
+    [zoom]="zoom"
+    (mapClick)="setLocation($event)"
+  >
+    <map-marker
+      *ngIf="notice?.location"
+      [position]="{
+        lat: notice!.location!.latitude,
+        lng: notice!.location!.longitude
+      }"
+    >
+    </map-marker>
+  </google-map>
+</mat-dialog-content>
+
+<mat-dialog-actions class="actions">
+  <button mat-stroked-button (click)="cancel()">Cancel</button>
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="submit()"
+    [disabled]="
+      !notice!.title || !notice!.category || !notice!.location?.address
+    "
+  >
+    Save
+  </button>
+</mat-dialog-actions>

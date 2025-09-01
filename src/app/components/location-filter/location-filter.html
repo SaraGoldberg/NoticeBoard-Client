@@ -1,0 +1,31 @@
+<div class="location-filter full-width">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Enter address</mat-label>
+    <input
+      matInput
+      #addressInput
+      [(ngModel)]="query"
+      placeholder="Enter address..."
+    />
+    <button
+      *ngIf="query"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="clearQuery()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <div class="distance-slider">
+    <label>Distance (km): {{ distance }} km</label>
+    <mat-slider min="1" max="50" step="1" thumbLabel>
+      <input
+        matSliderThumb
+        [(ngModel)]="distance"
+        (ngModelChange)="onDistanceChange($event)"
+      />
+    </mat-slider>
+  </div>
+  <button mat-stroked-button (click)="useMyLocation()">Use My Location</button>
+</div>
